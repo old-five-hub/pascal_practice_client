@@ -3,7 +3,7 @@ export interface BaseResponse {
     msg: string;
 }
 
-export type Response<T> = BaseResponse & {
+export type CommonResponse<T> = BaseResponse & {
     data: T
 }
 

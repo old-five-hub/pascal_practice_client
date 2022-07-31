@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { Button } from '@arco-design/web-react';
+import { useMachine } from '@xstate/react';
 import './App.css'
 
+import { Request } from './api/request';
+import { TagMachine } from './machine/tag';
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [current, send] = useMachine(TagMachine)
+
+  const { tags } = current.context;
+
+  console.log(tags)
 
   return (
     <div className="App p-15 m-100 bg-primary">
       <Button type="primary">测试</Button>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {
+        tags.map(
+          i => <Button key={i.Id}>
+            {
+              i.Name
+            }
+          </Button>
+        )
+      }
     </div>
   )
 }

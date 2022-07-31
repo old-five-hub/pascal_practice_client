@@ -1,8 +1,8 @@
 import { CommonResponse } from './common';
 import { Tag } from './tag';
 
-class PascalPracticeServer {
-    public getTags!: () => CommonResponse<Tag[]>;
+class PascalPracticeService {
+    public getTags!: () => CommonResponse<{lists: Tag[]}>;
 }
 
-export default PascalPracticeServer
+export default PascalPracticeService
