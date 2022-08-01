@@ -4,13 +4,16 @@ import { vitePluginForArco } from '@arco-plugins/vite-react'
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig((configEnv) => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     }
   },
-  plugins: [react(), vitePluginForArco({style: 'css'})],
+  plugins: [
+    react(), 
+    vitePluginForArco({style: 'css'}), 
+  ],
   server: {
     proxy: {
       '/app': {
@@ -19,4 +22,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))
