@@ -1,10 +1,14 @@
 import Router from './router';
+import LoginModal from '@/components/LoginModal';
 import './App.css'
 
 
 function App() {
   return (
-    <Router />
+    <>
+      <LoginModal />
+      <Router />
+    </>
   )
 }
 

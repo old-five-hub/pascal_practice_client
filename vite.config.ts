@@ -16,7 +16,7 @@ export default defineConfig((configEnv) => ({
   ],
   server: {
     proxy: {
-      '/app': {
+      '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true
       }

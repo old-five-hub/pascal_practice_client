@@ -1,8 +1,8 @@
 import { CommonResponse } from './common';
-import { Tag } from './tag';
+import * as account from './account'
 
 class PascalPracticeService {
-    public getTags!: () => CommonResponse<{lists: Tag[]}>;
+    public accountLogin!: (params: account.AccountLoginRequest) => CommonResponse<account.AccountInfo>;
 }
 
 export default PascalPracticeService

@@ -1,17 +1,18 @@
 
 import mAxios from './mAxios';
 import PascalPracticeService from '@/typing/service'
+import { Arg0 } from '@/typing/helper/args';
 import { fail, ok } from '@/utils/response';
 import { RespCode } from '@/constant/request';
 
 const PathMap: Partial<Record<keyof PascalPracticeService, string>> = {
-    getTags: '/app/v1/tags'
+    accountLogin: '/api/account/login'
 }
 
-async function Request<M extends keyof PascalPracticeService>(
+async function request<M extends keyof PascalPracticeService>(
     data: {
         method: M,
-        payload?: PascalPracticeService[M],
+        payload?: Arg0<PascalPracticeService[M]>,
     }) {
     const { method, payload } = data;
     const url = PathMap[method]
@@ -26,4 +27,4 @@ async function Request<M extends keyof PascalPracticeService>(
     return fail(resp.data.msg)
 }
 
-export { Request }
+export { request }
