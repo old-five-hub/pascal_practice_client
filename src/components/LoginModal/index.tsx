@@ -1,36 +1,47 @@
-import { useRef } from 'react';
+import { useRef, FC } from 'react';
 import { Modal, Form, Input, Button, Checkbox, FormInstance } from '@arco-design/web-react';
 import { IconUser, IconLock } from '@arco-design/web-react/icon';
-import { useMachine } from '@xstate/react';
-import { accountMachine, loginAccount } from '@/machine/account';
+import { useRecoilState } from 'recoil';
+import { AccountState, loginModalVisibleState } from '@/state/account';
 import { AccountLoginRequest } from '@/typing/service/account';
+import { accountLogin } from '@/state/account';
+import { useRequest } from 'ahooks';
 
 const FormItem = Form.Item;
-
 
 const commonFormItemProps = {
     wrapperCol: {span: 24}
 }
 
-const LoginModal = () => {
+const LoginModal: FC = () => {
+    const { loading, runAsync, error  } = useRequest(accountLogin, {
+        manual: true
+    })
+    
     const formRef = useRef<FormInstance>(null);
-
-    const [current, send] = useMachine(accountMachine)
-    const { account } = current.context;
+    const [visible, setVisible] = useRecoilState(loginModalVisibleState)
+    const [_, setAccountInfo] = useRecoilState(AccountState)
 
     const validForm = async () => {
         if (!formRef.current) {
             return
         }
+        await formRef.current?.validate();
+        const payload = formRef.current.getFields();
         try {
-            await formRef.current?.validate();
-            const payload = formRef.current.getFields();
-            send(loginAccount(payload as AccountLoginRequest))
-        } catch (_) {
+            const res = await runAsync(payload as AccountLoginRequest)
+            setAccountInfo(res);
+            toggleVisible();
+        } catch (e) {
         }
     }
 
-    return <Modal visible={true} footer={null} closeIcon={null}>
+    const toggleVisible = () => {
+        setVisible(!visible)
+    }
+
+
+    return <Modal visible={visible} footer={null} onCancel={toggleVisible}>
         <div className="text-center text-2xl">
             登录
         </div>
@@ -51,8 +62,11 @@ const LoginModal = () => {
                 >
                     <Checkbox>请同意xxxx</Checkbox>
                 </FormItem>
+                {
+                    error && error?.message
+                }
                 <div className='flex justify-center'>
-                    <Button type="primary" className="w-5/6 mt-8" onClick={() => validForm()}>
+                    <Button type="primary" className="w-5/6 mt-8" onClick={() => validForm()} loading={loading}>
                         登录
                     </Button>
                 </div>

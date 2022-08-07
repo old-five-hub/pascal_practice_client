@@ -6,7 +6,8 @@ import { fail, ok } from '@/utils/response';
 import { RespCode } from '@/constant/request';
 
 const PathMap: Partial<Record<keyof PascalPracticeService, string>> = {
-    accountLogin: '/api/account/login'
+    accountLogin: '/api/account/login',
+    accountInfo: '/api/account/info'
 }
 
 async function request<M extends keyof PascalPracticeService>(

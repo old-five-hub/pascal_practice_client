@@ -1,14 +1,17 @@
+import { useContext } from 'react';
 import Router from './router';
 import LoginModal from '@/components/LoginModal';
 import './App.css'
+import { RecoilRoot } from 'recoil';
+
 
 
 function App() {
   return (
-    <>
-      <LoginModal />
+    <RecoilRoot>
+      <LoginModal/>
       <Router />
-    </>
+    </RecoilRoot>
   )
 }
 

@@ -3,12 +3,9 @@ export interface AccountLoginRequest {
     password: string;
 }
 
-export interface AccountLoginResponse {
-    token: string
-}
 
 export interface AccountInfo {
     nickname: string;
     avatar: string;
-    follow: number
+    follow: number;
 }

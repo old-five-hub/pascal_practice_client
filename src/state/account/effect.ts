@@ -10,5 +10,15 @@ export const accountLogin = async (payload: accountType.AccountLoginRequest) => 
     if (res.ok) {
         return res.val
     }
-    return Promise.reject();
+    return Promise.reject(res.msg);
+}
+
+export const getAccountInfo = async () => {
+    const res = await request({
+        method: 'accountInfo',
+    })
+    if (res.ok) {
+        return res.val
+    }
+    return Promise.reject(res.msg);
 }
