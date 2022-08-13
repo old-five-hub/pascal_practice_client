@@ -1,7 +1,14 @@
+import { CommonResponse } from "./common";
+
 export interface Tag {
-    Id: number;
-    Name: string;
-    Hot: number;
-    CreateAt: string;
-    UpdateAt: string;
+    id: number;
+    name: string;
+    hot: number;
+    icon: string;
+    createAt: string;
+    updateAt: string;
 }
+
+export type TagListResponse = CommonResponse<{
+    lists: Tag[]
+}>

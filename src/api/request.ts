@@ -7,7 +7,9 @@ import { RespCode } from '@/constant/request';
 
 const PathMap: Partial<Record<keyof PascalPracticeService, string>> = {
     accountLogin: '/api/account/login',
-    accountInfo: '/api/account/info'
+    accountInfo: '/api/account/info',
+    tagList: '/api/content/tag/list',
+    questionList: '/api/content/question/list',
 }
 
 async function request<M extends keyof PascalPracticeService>(
@@ -23,7 +25,7 @@ async function request<M extends keyof PascalPracticeService>(
     type Response = Awaited<ReturnType<PascalPracticeService[M]>>
     const resp = await mAxios.post<Response>(url, payload)
     if (resp.data.code === RespCode.SUCCESS) {
-        return ok(resp.data.data)
+        return ok(resp.data.data as Response['data'])
     }
     return fail(resp.data.msg)
 }

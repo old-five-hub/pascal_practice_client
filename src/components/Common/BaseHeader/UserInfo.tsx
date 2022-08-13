@@ -1,6 +1,6 @@
 import { Button, Avatar } from '@arco-design/web-react';
 import { useRecoilState } from 'recoil';
-import { AccountState, loginModalVisibleState } from '@/state/account';
+import { accountState, loginModalVisibleState } from '@/state/account';
 import { useMount, useRequest } from 'ahooks';
 import { getAccountInfo } from '@/state/account';
 import Cookies from 'js-cookie';
@@ -9,7 +9,7 @@ const UserInfo = () => {
     const { runAsync } = useRequest(getAccountInfo, {
         manual: true
     })
-    const [account, setAccountInfo] = useRecoilState(AccountState)
+    const [account, setAccountInfo] = useRecoilState(accountState)
     const [_, setVisible] = useRecoilState(loginModalVisibleState)
 
     const openLoginModal = () => {

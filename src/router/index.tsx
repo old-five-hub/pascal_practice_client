@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import HomeLayout from '@/layout/HomeLayout';
 import HomePage from '@/components/HomePage';
-import TopicList from '@/components/TopicList';
+import TopicList from '@/components/QuestionList';
 
 export default () => {
     return <BrowserRouter>

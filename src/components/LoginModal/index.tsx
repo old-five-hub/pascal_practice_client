@@ -2,7 +2,7 @@ import { useRef, FC } from 'react';
 import { Modal, Form, Input, Button, Checkbox, FormInstance } from '@arco-design/web-react';
 import { IconUser, IconLock } from '@arco-design/web-react/icon';
 import { useRecoilState } from 'recoil';
-import { AccountState, loginModalVisibleState } from '@/state/account';
+import { accountState, loginModalVisibleState } from '@/state/account';
 import { AccountLoginRequest } from '@/typing/service/account';
 import { accountLogin } from '@/state/account';
 import { useRequest } from 'ahooks';
@@ -20,7 +20,7 @@ const LoginModal: FC = () => {
     
     const formRef = useRef<FormInstance>(null);
     const [visible, setVisible] = useRecoilState(loginModalVisibleState)
-    const [_, setAccountInfo] = useRecoilState(AccountState)
+    const [_, setAccountInfo] = useRecoilState(accountState)
 
     const validForm = async () => {
         if (!formRef.current) {

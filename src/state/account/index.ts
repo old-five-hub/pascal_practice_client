@@ -3,7 +3,7 @@ import { AccountInfo } from '@/typing/service/account';
 
 export * from './effect';
 
-export const AccountState = atom<AccountInfo | null>({
+export const accountState = atom<AccountInfo | null>({
     key: 'accountState',
     default: null
 })
