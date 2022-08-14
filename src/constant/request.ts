@@ -1,3 +1,3 @@
 export enum RespCode {
-    SUCCESS = 200,
+  SUCCESS = 200,
 }

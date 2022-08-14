@@ -1,3 +1,3 @@
 export interface HandleCheckTag {
-    (checked: boolean, id: number ): void;
+  (checked: boolean, id: number): void;
 }

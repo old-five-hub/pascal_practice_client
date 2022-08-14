@@ -1,14 +1,14 @@
-import { CommonResponse } from "./common";
+import { CommonResponse } from './common';
 
 export interface AccountLoginRequest {
-    username: string;
-    password: string;
+  username: string;
+  password: string;
 }
 
 export interface AccountInfo {
-    nickname: string;
-    avatar: string;
-    follow: number;
+  nickname: string;
+  avatar: string;
+  follow: number;
 }
 
-export type AccountLoginResponse = CommonResponse<AccountInfo>
+export type AccountLoginResponse = CommonResponse<AccountInfo>;
