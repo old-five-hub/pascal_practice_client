@@ -12,21 +12,23 @@ const QuestionTabFilter: FC<Props> = ({ handleCheckTag }) => {
   const { data } = useRequest(getTagList);
 
   return (
-    <div className="flex  p-8 border rounded">
+    <div className="flex  p-8 border rounded items-center">
       <div className="label">题目标签：</div>
       <div className="flex-1">
         {data?.lists.map((i) => (
-          <Tag
-            key={i.id}
-            color="arcoblue"
-            checkable
-            className="mr-8"
-            onCheck={(checked) => handleCheckTag(checked, i.id)}
-            size="large"
-          >
-            <img className="h-6 mr-2" src={i.icon} alt="" />
-            {i.name}({i.count})
-          </Tag>
+          <Badge key={i.id} text={i.hot ? 'hot' : ''} offset={[-25, -2]}>
+            <Tag
+              key={i.id}
+              color="arcoblue"
+              checkable
+              className="mr-12"
+              onCheck={(checked) => handleCheckTag(checked, i.id)}
+              size="large"
+            >
+              <img className="h-6 mr-2" src={i.icon} alt="" />
+              {i.name}({i.count})
+            </Tag>
+          </Badge>
         ))}
       </div>
     </div>

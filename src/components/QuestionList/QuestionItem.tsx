@@ -4,12 +4,16 @@ import { List, Tag } from '@arco-design/web-react';
 
 type Props = {
   data: Question;
+  goQuestionDetail: () => void;
 };
 
-const QuestionItem: FC<Props> = ({ data }) => {
+const QuestionItem: FC<Props> = ({ data, goQuestionDetail }) => {
   return (
     <List.Item>
-      <div className="text-lg font-bold cursor-pointer hover:underline hover:text-sky-700">
+      <div
+        className="text-lg font-bold cursor-pointer hover:underline hover:text-sky-700"
+        onClick={goQuestionDetail}
+      >
         {data.name}
       </div>
       <div className="mt-2">

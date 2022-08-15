@@ -7,8 +7,10 @@ import { Pagination } from '@/typing/service/common';
 import QuestionItem from './QuestionItem';
 import { List, Spin } from '@arco-design/web-react';
 import { QuestionListResponse } from '@/typing/service/question';
+import { useNavigate } from 'react-router-dom';
 
 const TopicList = () => {
+  const navigate = useNavigate();
   const [checkedTagIds, setCheckedTagIds] = useState<number[]>([]);
   const [pagination, setPagination] = useState<Pagination>({
     page: 1,
@@ -67,18 +69,26 @@ const TopicList = () => {
     }
   };
 
+  const goQuestionDetail = (id: number) => {
+    navigate(`/question/${id}`);
+  };
+
   return (
     <div className="h-full flex flex-col overflow-hidden">
       <QuestionTabFilter handleCheckTag={handleCheckTag} />
       <List
         className="mt-4 h-full overflow-y-auto"
         scrollLoading={scrollLodaing}
-        onReachBottom={(currentPage) =>
+        onReachBottom={() =>
           setPagination((data) => ({ ...data, page: data.page + 1 }))
         }
       >
         {data?.list.map((i) => (
-          <QuestionItem key={i.id} data={i} />
+          <QuestionItem
+            key={i.id}
+            data={i}
+            goQuestionDetail={() => goQuestionDetail(i.id)}
+          />
         ))}
       </List>
     </div>

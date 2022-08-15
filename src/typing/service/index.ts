@@ -2,7 +2,7 @@ import * as account from './account';
 import * as tag from './tag';
 import * as question from './question';
 
-class PascalPracticeService {
+export default class PascalPracticeService {
   public accountLogin!: (
     params: account.AccountLoginRequest
   ) => account.AccountLoginResponse;
@@ -12,5 +12,3 @@ class PascalPracticeService {
     params: question.QuestionListRequest
   ) => question.QuestionListResponse;
 }
-
-export default PascalPracticeService;

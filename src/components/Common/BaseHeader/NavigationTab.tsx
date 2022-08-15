@@ -8,7 +8,7 @@ const tabs = [
     title: '首页',
   },
   {
-    key: '/question-list',
+    key: '/question/list',
     title: '题库',
   },
 ];
