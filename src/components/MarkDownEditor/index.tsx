@@ -1,19 +1,13 @@
+import { FC } from 'react';
 import MilkDown from './MilkDown';
 
-const markdown = `
-# Milkdown React Test
-> [Milkdown](https://milkdown.dev/) is an editor.
-![cat](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/VAN_CAT.png/440px-VAN_CAT.png)
-\`\`\`javascript [Sample]
-const milkdown = new Milkdown();
-milkdown.create();
-\`\`\`
----
-Now you can play!
-`;
+type Props = {
+  markdown: string;
+  editable: boolean;
+};
 
-const MarkDownEditor = () => {
-  return <MilkDown value={markdown} editable={true} />;
+const MarkDownEditor: FC<Props> = ({ markdown, editable = true }) => {
+  return <MilkDown value={markdown} editable={editable} />;
 };
 
 export default MarkDownEditor;

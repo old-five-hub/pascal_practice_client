@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Question } from '@/typing/service/question';
 import { List, Tag } from '@arco-design/web-react';
+import BaseTag from '@/components/Common/BaseTag';
 
 type Props = {
   data: Question;
@@ -18,9 +19,7 @@ const QuestionItem: FC<Props> = ({ data, goQuestionDetail }) => {
       </div>
       <div className="mt-2">
         {data.tags.map((i) => (
-          <Tag key={i.id} color="cyan">
-            {i.name}
-          </Tag>
+          <BaseTag key={i.id} data={i}></BaseTag>
         ))}
       </div>
     </List.Item>

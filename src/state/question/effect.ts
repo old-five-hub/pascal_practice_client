@@ -23,3 +23,16 @@ export const getQuestionList = async (
   }
   return Promise.reject(res.msg);
 };
+
+export const getQuestionInfo = async (
+  payload: question.QuestionInfoRequest
+) => {
+  const res = await request({
+    method: 'questionInfo',
+    payload,
+  });
+  if (res.ok) {
+    return res.val;
+  }
+  return Promise.reject(res.msg);
+};

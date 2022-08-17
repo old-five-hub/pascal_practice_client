@@ -11,4 +11,7 @@ export default class PascalPracticeService {
   public questionList!: (
     params: question.QuestionListRequest
   ) => question.QuestionListResponse;
+  public questionInfo!: (
+    params: question.QuestionInfoRequest
+  ) => question.QuestionInfoResponse;
 }

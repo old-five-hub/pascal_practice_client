@@ -7,6 +7,10 @@ export interface QuestionListRequest {
   limit: number;
 }
 
+export interface QuestionInfoRequest {
+  id: number;
+}
+
 export type QuestionListResponse = CommonResponse<{
   list: Question[];
   limit: number;
@@ -15,9 +19,12 @@ export type QuestionListResponse = CommonResponse<{
   hasMore: boolean;
 }>;
 
+export type QuestionInfoResponse = CommonResponse<Question>;
+
 export interface Question {
   id: number;
   name: string;
   hot: number;
   tags: Tag[];
+  answer: string;
 }

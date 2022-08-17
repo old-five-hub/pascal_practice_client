@@ -17,7 +17,7 @@
     "@milkdown/plugin-prism": "^6.3.2",
     "@milkdown/plugin-tooltip": "^6.3.2",
     "@milkdown/plugin-upload": "^6.3.2",
-    "@milkdown/preset-commonmark": "^6.3.2",
+    "@milkdown/preset-gfm": "^6.3.2",
     "@milkdown/prose": "6.3.2",
     "@milkdown/react": "^6.3.2",
     "@milkdown/theme-nord": "^6.3.2",
