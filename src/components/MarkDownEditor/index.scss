@@ -1,0 +1,10 @@
+.milkdown {
+  box-shadow: 0 0!important;
+
+  .ProseMirror {
+    padding: 0!important;
+    .paragraph {
+      margin: 0!important;
+    }
+  }
+}

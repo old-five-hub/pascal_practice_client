@@ -1,6 +1,9 @@
+import * as common from './common';
 import * as account from './account';
 import * as tag from './tag';
 import * as question from './question';
+import * as like from './like';
+import * as comment from './comment';
 
 export default class PascalPracticeService {
   public accountLogin!: (
@@ -14,4 +17,10 @@ export default class PascalPracticeService {
   public questionInfo!: (
     params: question.QuestionInfoRequest
   ) => question.QuestionInfoResponse;
+  public updateLike!: (
+    params: like.UpdateLikeRequest
+  ) => common.CommonResponse<null>;
+  public questionComments!: (
+    params: comment.QuestionCommentRequest
+  ) => comment.QuestionCommentsResponse;
 }

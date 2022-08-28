@@ -1,7 +1,7 @@
 import { Question } from '@/typing/service/question';
-import { Tag } from '@arco-design/web-react';
 import { FC } from 'react';
 import BaseTag from '@/components/Common/BaseTag';
+import MarkDownEditor from '../MarkDownEditor';
 
 type Props = {
   data: Question | undefined;
@@ -9,12 +9,17 @@ type Props = {
 
 const QuestionBaseInfo: FC<Props> = ({ data }) => {
   return (
-    <div className="shadow mb-4 p-8 rounded">
+    <div className=" mb-4 p-8 border border-slate-400 rounded">
       <div className="title text-lg font-bold">{data?.name}</div>
       <div className="mt-4">
         {data?.tags.map((i) => (
           <BaseTag key={i.id} data={i}></BaseTag>
         ))}
+      </div>
+      <div className="mt-8">
+        {data?.desc && (
+          <MarkDownEditor markdown={data?.desc || ''} editable={false} />
+        )}
       </div>
     </div>
   );

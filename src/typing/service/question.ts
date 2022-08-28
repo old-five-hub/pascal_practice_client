@@ -27,4 +27,7 @@ export interface Question {
   hot: number;
   tags: Tag[];
   answer: string;
+  desc: string;
+  liked: boolean;
+  likeCount: number;
 }

@@ -10,6 +10,8 @@ const PathMap: Partial<Record<keyof PascalPracticeService, string>> = {
   tagList: '/api/content/tag/list',
   questionList: '/api/content/question/list',
   questionInfo: '/api/content/question/info',
+  updateLike: '/api/content/like/update',
+  questionComments: '/api/content/comment/list',
 };
 
 async function request<M extends keyof PascalPracticeService>(data: {
