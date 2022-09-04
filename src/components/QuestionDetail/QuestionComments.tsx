@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 import { useRequest } from 'ahooks';
-import { questionComments } from '@/state/question';
+import { questionComments, createComment } from '@/state/question';
 import { CoverntCommentList } from './utils';
 import CommentItem from './CommentItem';
 
@@ -9,9 +9,14 @@ type Props = {
 };
 
 const QuestionComments: FC<Props> = ({ id }) => {
-  const { loading, data } = useRequest(() =>
+  const { data, refresh: refreshFetchComment } = useRequest(() =>
     questionComments({ questionId: id })
   );
+
+  const { loading: createCommentPending, runAsync: runCreateComment } =
+    useRequest(createComment, {
+      manual: true,
+    });
 
   const comments = useMemo(() => {
     return CoverntCommentList(data?.comments || []);
@@ -23,7 +28,14 @@ const QuestionComments: FC<Props> = ({ id }) => {
         评论（{data?.comments.length || 0}）
       </div>
       {comments.map((i) => (
-        <CommentItem key={i.id} data={i} />
+        <CommentItem
+          key={i.id}
+          data={i}
+          createComment={runCreateComment}
+          questionId={id}
+          loading={createCommentPending}
+          refreshFetchComment={refreshFetchComment}
+        />
       ))}
     </div>
   );

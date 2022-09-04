@@ -27,6 +27,7 @@ specifiers:
   ahooks: ^3.6.2
   autoprefixer: ^10.4.7
   axios: ^0.27.2
+  dayjs: ^1.11.5
   eslint: ^8.22.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.2.1
@@ -68,6 +69,7 @@ dependencies:
   '@xstate/react': 3.0.0_ad54ufqkthlhcdffkpeqdmqmtm
   ahooks: 3.6.2_react@18.2.0
   axios: 0.27.2
+  dayjs: 1.11.5
   js-cookie: 3.0.1
   model: link:@milkdown/prose/model
   react: 18.2.0
@@ -127,7 +129,7 @@ packages:
       b-tween: 0.3.3
       b-validate: 1.4.1
       compute-scroll-into-view: 1.0.17
-      dayjs: 1.11.4
+      dayjs: 1.11.5
       lodash: 4.17.21
       number-precision: 1.5.2
       react: 18.2.0
@@ -1143,7 +1145,7 @@ packages:
     dependencies:
       '@types/js-cookie': 2.2.7
       ahooks-v3-count: 1.0.0
-      dayjs: 1.11.4
+      dayjs: 1.11.5
       intersection-observer: 0.12.2
       js-cookie: 2.2.1
       lodash: 4.17.21
@@ -1461,8 +1463,8 @@ packages:
   /csstype/3.1.0:
     resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
 
-  /dayjs/1.11.4:
-    resolution: {integrity: sha512-Zj/lPM5hOvQ1Bf7uAvewDaUcsJoI6JmNqmHhHl3nyumwe0XHwt8sWdOVAPACJzCebL8gQCi+K49w7iKWnGwX9g==}
+  /dayjs/1.11.5:
+    resolution: {integrity: sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA==}
     dev: false
 
   /debug/3.2.7:

@@ -62,3 +62,14 @@ export const questionComments = async (
   }
   return Promise.reject(res.msg);
 };
+
+export const createComment = async (payload: comment.CreateCommentRequest) => {
+  const res = await request({
+    method: 'createComment',
+    payload,
+  });
+  if (res.ok) {
+    return res.val;
+  }
+  return Promise.reject(res.msg);
+};

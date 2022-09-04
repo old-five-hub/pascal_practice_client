@@ -23,4 +23,7 @@ export default class PascalPracticeService {
   public questionComments!: (
     params: comment.QuestionCommentRequest
   ) => comment.QuestionCommentsResponse;
+  public createComment!: (
+    params: comment.CreateCommentRequest
+  ) => common.CommonResponse<null>;
 }

@@ -1,23 +1,13 @@
-import { useMemo } from 'react';
+import { useMemo, FC } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Tabs } from '@arco-design/web-react';
 const TabPane = Tabs.TabPane;
 
-const tabs = [
-  {
-    key: '/',
-    title: '首页',
-  },
-  {
-    key: '/question/list',
-    title: '题库',
-    active: (path: string) => {
-      return path.indexOf('/question') > -1;
-    },
-  },
-];
+type Props = {
+  tabs: { key: string; title: string; active?: (path: string) => boolean }[];
+};
 
-const NavigationTab = () => {
+const BaseNavigationTab: FC<Props> = ({ tabs }) => {
   const navigation = useNavigate();
   const location = useLocation();
 
@@ -44,4 +34,4 @@ const NavigationTab = () => {
   );
 };
 
-export default NavigationTab;
+export default BaseNavigationTab;

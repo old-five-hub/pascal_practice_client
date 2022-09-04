@@ -8,6 +8,7 @@ export interface Comment {
   parentId: number;
   likeCount: number;
   liked: boolean;
+  createAt: string;
 }
 
 export type QuestionCommentRequest = {
@@ -17,3 +18,9 @@ export type QuestionCommentRequest = {
 export type QuestionCommentsResponse = CommonResponse<{
   comments: Comment[];
 }>;
+
+export type CreateCommentRequest = {
+  questionId: number;
+  content: string;
+  parentId: number;
+};

@@ -21,7 +21,7 @@ const commonFormItemProps = {
 };
 
 const LoginModal: FC = () => {
-  const { loading, runAsync, error } = useRequest(accountLogin, {
+  const { loading, runAsync } = useRequest(accountLogin, {
     manual: true,
   });
 
@@ -85,7 +85,6 @@ const LoginModal: FC = () => {
           >
             <Checkbox>请同意xxxx</Checkbox>
           </FormItem>
-          {error && error?.message}
           <div className="flex justify-center">
             <Button
               type="primary"

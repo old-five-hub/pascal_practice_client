@@ -1,7 +1,7 @@
 import { Comment } from '@/typing/service/comment';
 
 export type CommentListItem = Comment & {
-  children: Comment[];
+  children: CommentListItem[];
 };
 
 const getChild = (id: number, lists: Comment[]): CommentListItem[] => {
