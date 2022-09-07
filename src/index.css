@@ -72,3 +72,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+.arco-switch {
+  background-color: var(--color-fill-4);
+}

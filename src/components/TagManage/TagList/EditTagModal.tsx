@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Modal, Form, Input, Upload } from '@arco-design/web-react';
+import { Modal, Form, Input, Switch } from '@arco-design/web-react';
+import ImageUpload from '@/components/Common/ImageUpload';
 import './index.scss';
 
 const FormItem = Form.Item;
@@ -16,7 +17,10 @@ const EditTagModal: FC<Props> = ({ visible }) => {
           <Input placeholder="请输入标签名称" />
         </FormItem>
         <FormItem label="图标" field="icon" required>
-          <Upload listType="picture-card" />
+          <ImageUpload />
+        </FormItem>
+        <FormItem label="是否热门" field="hot" required>
+          <Switch />
         </FormItem>
       </Form>
     </Modal>

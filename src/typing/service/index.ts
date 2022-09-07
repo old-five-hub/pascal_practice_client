@@ -26,4 +26,5 @@ export default class PascalPracticeService {
   public createComment!: (
     params: comment.CreateCommentRequest
   ) => common.CommonResponse<null>;
+  public uploadFile!: (params: FormData) => common.CommonResponse<null>;
 }
