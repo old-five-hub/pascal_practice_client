@@ -1,11 +1,26 @@
-import { getTagList } from '@/state/question/effect';
-import { useRequest } from 'ahooks';
-import { Table, TableColumnProps, Button } from '@arco-design/web-react';
+import { useState } from 'react';
+import { getTagList, deleteTag } from '@/state/question/effect';
+import { useRequest, useToggle } from 'ahooks';
+import {
+  Table,
+  TableColumnProps,
+  Button,
+  Popconfirm,
+} from '@arco-design/web-react';
 import { time2NormalTimeStr } from '@/utils/time';
 import EditTagModal from './EditTagModal';
+import { Tag } from '@/typing/service/tag';
 
 const TagList = () => {
-  const { data, loading } = useRequest(getTagList);
+  const { data, loading, refresh: refreshList } = useRequest(getTagList);
+  const { runAsync: runDeleteTag } = useRequest(deleteTag, {
+    manual: true,
+    onSuccess() {
+      refreshList();
+    },
+  });
+  const [modalVisible, { toggle: toggleVisible }] = useToggle(false);
+  const [currTag, setCurrTag] = useState<Tag | null>(null);
 
   const columns: TableColumnProps[] = [
     {
@@ -40,26 +55,52 @@ const TagList = () => {
     {
       title: '操作',
       dataIndex: 'operation',
-      render(_) {
+      render(_, tag) {
         return (
           <div>
-            <Button className="mr-4" type="text">
+            <Button
+              className="mr-4"
+              type="text"
+              onClick={() => openEditModal(tag)}
+            >
               编辑
             </Button>
-            <Button status="danger" type="text">
-              删除
-            </Button>
+            <Popconfirm
+              title="确定要删除标签吗?"
+              onOk={() => runDeleteTag({ id: tag.id })}
+            >
+              <Button status="danger" type="text">
+                删除
+              </Button>
+            </Popconfirm>
           </div>
         );
       },
     },
   ];
 
+  const openEditModal = (tag: Tag) => {
+    setCurrTag(tag);
+    toggleVisible();
+  };
+
+  const openCreateModal = () => {
+    setCurrTag(null);
+    toggleVisible();
+  };
+
   return (
     <div>
-      <EditTagModal visible={true} />
+      <EditTagModal
+        visible={modalVisible}
+        currTag={currTag}
+        toggleVisible={toggleVisible}
+        handleSaveSuccess={refreshList}
+      />
       <div className="mb-8">
-        <Button type="primary">新建标签</Button>
+        <Button type="primary" onClick={openCreateModal}>
+          新建标签
+        </Button>
       </div>
       <Table
         loading={loading}

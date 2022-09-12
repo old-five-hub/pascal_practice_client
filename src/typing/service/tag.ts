@@ -13,3 +13,17 @@ export interface Tag {
 export type TagListResponse = CommonResponse<{
   lists: Tag[];
 }>;
+
+export interface CreateTagRequest {
+  name: string;
+  hot: number;
+  icon: string;
+}
+
+export interface UpdateTagRequest extends CreateTagRequest {
+  id: number;
+}
+
+export interface DeleteTagRequest {
+  id: number;
+}

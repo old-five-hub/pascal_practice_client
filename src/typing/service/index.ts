@@ -11,6 +11,15 @@ export default class PascalPracticeService {
   ) => account.AccountLoginResponse;
   public accountInfo!: () => account.AccountLoginResponse;
   public tagList!: () => tag.TagListResponse;
+  public createTag!: (
+    params: tag.CreateTagRequest
+  ) => common.CommonResponse<null>;
+  public updateTag!: (
+    params: tag.UpdateTagRequest
+  ) => common.CommonResponse<null>;
+  public deleteTag!: (
+    params: tag.DeleteTagRequest
+  ) => common.CommonResponse<null>;
   public questionList!: (
     params: question.QuestionListRequest
   ) => question.QuestionListResponse;
@@ -26,5 +35,7 @@ export default class PascalPracticeService {
   public createComment!: (
     params: comment.CreateCommentRequest
   ) => common.CommonResponse<null>;
-  public uploadFile!: (params: FormData) => common.CommonResponse<null>;
+  public uploadFile!: (
+    params: FormData
+  ) => common.CommonResponse<{ uri: string }>;
 }
